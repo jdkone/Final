@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!--Top Panel-->
+    <div id="topbar">
+      <h2>Has Marijuana Legalisation Changed the Geography of Drug Crime in Denver?</h2>
+    <!--Left Panel-->
+    <div id="sidebar">
+      <div class="slide" id="slide1">
+        <h1>2013</h1>
+        <p>Although the State of Colorado voted to legalize recreational cannabis in 2012, commercial sales to the public did not commence until 2014.</p>
+      </div>
+      <div class="slide" id="slide2">
+        <h1>2014</h1>
+        <p>Due to the lag between the vote for legalizing cannabis and the final rollout of regulations and approvals, many retailers began setting up shop prior to 2014. As a result, there was an explosion of cannabis retailers operating once the law took effect. This map shows the locations of all active retailers in 2014, with 671 in total.</p>
+        <img src="https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/slide2_graph.png">
+      </div>
+      <div class="slide" id="slide3">
+        <h1>2015</h1>
+        <p>After a full year of legalization, Denver's cannabis industry continued to grow at a high rate, with 832 active retailers.</p>
+        <img src="https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/slide3_graph.png">
+      </div>
+      <div class="slide" id="slide4">
+        <h1>2016</h1>
+        <p>By 2016, the rate of growth began to slow, with 880 active retailers.</p>
+        <img src="https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/slide4_graph.png">
+      </div>
+      <div class="slide" id="slide5">
+        <h1>2017</h1>
+        <p>In 2017, three years after legalization, there were 903 active retailers in Denver. As the growth rate continues to slow, it seems Denver's cannabis industry may be reaching peak saturation.</p>
+        <img src="https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/slide5_graph.png">
+      </div>
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+    <div id="slide_holder"></div>
+    <!-- Javascript Imports -->
+    <script src="js/leaflet.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/midterm1.js"></script>
+  </body>
+</html>
