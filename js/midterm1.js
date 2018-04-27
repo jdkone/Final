@@ -1,8 +1,205 @@
-/* =====================
- Leaflet setup - feel free to ignore this
-===================== */
+mapboxgl.accessToken = 'pk.eyJ1IjoianVrb25lIiwiYSI6ImNqZmQ3NHJoMTFpYjQycW1zNjRtaDk4cncifQ.vW4XKi58xHwWOSJIqCs_9Q';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: {
+        "version": 8,
+        "sources": {
+            "simple-tiles": {
+                "type": "raster",
+                "tiles": [
+                    "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png",
+                    "http://b.tile.stamen.com/toner/{z}/{x}/{y}.png",
+                    "http://c.tile.stamen.com/toner/{z}/{x}/{y}.png",
+                    "http://d.tile.stamen.com/toner/{z}/{x}/{y}.png"
+                ],
+                "tileSize": 256
+            }
+        },
+        "layers": [{
+            "id": "simple-tiles",
+            "type": "raster",
+            "source": "simple-tiles",
+            "minzoom": 0,
+            "maxzoom": 19
+        }]
+    },
+    zoom: 9,
+    center: [-104.597717, 39.728894]
+});
 
-var customIcon = L.icon({
+map.on('load', function() {
+  map.addLayer({
+    "id": "drugCrime",
+    "type": "heatmap",
+    "source": {
+      "type": "vector",
+      "tiles": ["https://s3.amazonaws.com/cpln-nathan/{z}/{x}/{y}.pbf"],
+      "minzoom": 0,
+      "maxzoom": 19
+    },
+    "source-layer": "drugCrime",
+    "paint": {
+      "heatmap-color": [
+          "interpolate",
+          ["linear"],
+          ["heatmap-density"],
+          0, "#F28CD3",
+          0.2, "#D762A6",
+          0.4, "#BE4483",
+          0.6, "#9A3F73",
+          0.8, "#753962",
+          1, "#562B51"
+      ],
+      "heatmap-opacity": 0.75,
+  }
+});
+  var points =  map.addLayer({
+          "id": "points",
+          "type": "symbol",
+          "source": {
+              "type": "geojson",
+              "data": "https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/marijuana_licenses_geo1.geojson"
+              },
+          "layout": {
+              "icon-image": "pot_leaf.png",
+          }
+      });
+  });
+
+map.addControl(new mapboxgl.NavigationControl());
+
+
+/*map.on('load', function() {
+
+  map.addSource('drugcrime'{
+    "type": "vector",
+    "data": {
+      "type": "vector",
+      "tiles": ["https://s3.amazonaws.com/cpln-nathan/{z}/{x}/{y}.pbf"],
+      "minzoom": 0,
+      "maxzoom": 19
+      }
+    });
+//FOR HEATMAP, COPY NATHANS CODE AGAIN, THEN CHANGE TYPE TO HEATMAP AND REMOVE COLOR
+    map.addLayer({
+        "id": "drugcrime-heat",
+        "type": "heatmap",
+        "source": "drugcrime",
+        "maxzoom": 9,
+        "paint": {
+            // Increase the heatmap weight based on frequency and property magnitude
+            "heatmap-weight": [
+                "interpolate",
+                ["linear"],
+                ["get", "mag"],
+                0, 0,
+                6, 1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            "heatmap-intensity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                0, 1,
+                9, 3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            "heatmap-color": [
+                "interpolate",
+                ["linear"],
+                ["heatmap-density"],
+                0, "#F28CD3",
+                0.2, "#D762A6",
+                0.4, "#BE4483",
+                0.6, "#9A3F73",
+                0.8, "#753962",
+                1, "#562B51"
+            ],
+            // Adjust the heatmap radius by zoom level
+            "heatmap-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                0, 2,
+                9, 20
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            "heatmap-opacity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                7, 1,
+                9, 0
+            ],
+        }
+    }, 'waterway-label');
+
+    map.addLayer({
+        "id": "drugcrime-point",
+        "type": "circle",
+        "source": "drugcrime",
+        "minzoom": 7,
+        "paint": {
+            // Size circle radius by earthquake magnitude and zoom level
+            "circle-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                7, [
+                    "interpolate",
+                    ["linear"],
+                    ["get", "mag"],
+                    1, 1,
+                    6, 4
+                ],
+                16, [
+                    "interpolate",
+                    ["linear"],
+                    ["get", "mag"],
+                    1, 5,
+                    6, 50
+                ]
+            ],
+            // Color circle by earthquake magnitude
+            "circle-color": [
+                "interpolate",
+                ["linear"],
+                ["get", "mag"],
+                1, "#F28CD3",
+                2, "#D762A6",
+                3, "#BE4483",
+                4, "#9A3F73",
+                5, "#753962",
+                6, "#562B51"
+            ],
+            //"circle-stroke-color": "white",
+            //"circle-stroke-width": 1,
+            // Transition from heatmap to circle layer by zoom level
+            "circle-opacity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                7, 0,
+                8, 1
+            ]
+        }
+    }, 'waterway-label');
+});
+
+*/
+
+
+
+
+
+
+
+
+
+/*var customIcon = L.icon({
     iconUrl: 'pot_leaf.png',
     shadowUrl: null,
     iconSize:     [95, 95], // size of the icon
@@ -69,7 +266,7 @@ downloadData = $.ajax(pointData);
 downloadData.done(function(points) {
   parsedPoints = JSON.parse(points);
 
-      /* var slide1 = function(parsedPoints) { return false; };
+      var slide1 = function(parsedPoints) { return false; };
      var slide2 = function(parsedPoints) {_.each(parsedPoints, function(item) { if (item.properties.Year === "2010"|"2011"|"2012"|"2013"|"2014") {
            markerArray.push(L.marker([item.geometry.coordinates[1] , item.geometry.coordinates[0]], markerOptions));
            var plotMarkers = function(markerArray) {
@@ -112,7 +309,7 @@ downloadData.done(function(points) {
         }
       });
     };
-*/
+
 
 var slideDeck = [slide1, slide2, slide3, slide4, slide5];
 
@@ -208,3 +405,4 @@ function showSlide(i) {
         $('#next').show();
 }
 });
+*/
