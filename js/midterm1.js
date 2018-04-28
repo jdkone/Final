@@ -76,7 +76,7 @@ map.on('load', function() {
         'icon-image': 'icon',
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
-        'icon-size': 0.1
+        'icon-size': 0.04
       }
     });
   });
