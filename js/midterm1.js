@@ -53,18 +53,34 @@ map.on('load', function() {
       "heatmap-opacity": 0.75,
   }
 });
-  var points =  map.addLayer({
-          "id": "points",
-          "type": "symbol",
-          "source": {
-              "type": "geojson",
-              "data": "https://raw.githubusercontent.com/jdkone/OST4GIS-Midterm/master/marijuana_licenses_geo1.geojson"
-              },
-          "layout": {
-              "icon-image": "pot_leaf.png",
-          }
-      });
+
+  const data = "https://raw.githubusercontent.com/jdkone/Final/master/marijuana_licenses_geo.geojson?token=AhvfewGC5LM0zCRbfX5ACbE8ZYibPjWLks5a7L-_wA%3D%3D";
+
+  map.addSource("sourcey", {
+     		"type": "geojson",
+      	"data": data
+    });
+
+	map.loadImage("https://raw.githubusercontent.com/jdkone/Final/master/pot_leaf.png?token=Ahvfe8BZW__YkHL3-LVP5gNZA4TkoDuQks5a7MZHwA%3D%3D", (error, data) => {
+    if(error){
+      alert("wellllllll well well");
+    }
+
+    map.addImage("icon", data);
+    
+    map.addLayer({
+      id: 'iconLayer',
+      type: "symbol",
+      source: 'sourcey',
+      layout: {
+        'icon-image': 'icon',
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
+        'icon-size': 0.5
+      }
+    });
   });
+});
 
 map.addControl(new mapboxgl.NavigationControl());
 
