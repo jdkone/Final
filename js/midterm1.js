@@ -61,7 +61,7 @@ map.on('load', function() {
       	"data": data
     });
 
-	map.loadImage("https://raw.githubusercontent.com/jdkone/Final/master/pot_leaf.png?token=Ahvfe8BZW__YkHL3-LVP5gNZA4TkoDuQks5a7MZHwA%3D%3D", (error, data) => {
+	map.loadImage("https://raw.githubusercontent.com/jdkone/Final/master/pot_leaf.png?token=Ahvfe5Ezbo7_gHtUOaKef_pgoMUGDziOks5a7hVAwA%3D%3D", (error, data) => {
     if(error){
       alert("wellllllll well well");
     }
