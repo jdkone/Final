@@ -67,7 +67,7 @@ map.on('load', function() {
     }
 
     map.addImage("icon", data);
-    
+
     map.addLayer({
       id: 'iconLayer',
       type: "symbol",
@@ -76,7 +76,7 @@ map.on('load', function() {
         'icon-image': 'icon',
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
-        'icon-size': 0.5
+        'icon-size': 0.1
       }
     });
   });
