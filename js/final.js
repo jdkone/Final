@@ -24,20 +24,55 @@ var map = new mapboxgl.Map({
         }]
     },
     zoom: 9,
-    center: [-104.597717, 39.728894]
+    center: [-105.297717, 39.728894]
 });
 
-map.on('load', function() {
+map.addControl(new mapboxgl.NavigationControl());
+
+$(document).ready(function(){
+  $('#sidebar').show();
+  $('.dropdown-menu').hide();
+  $('#dropdownMenuButton').on('click', function() {
+    $('.dropdown-menu').show();
+  });
+  $('#crime').on('click', function() {
+    map.addLayer({
+      "id": "drugCrime",
+      "type": "heatmap",
+      "source": {
+        "type": "vector",
+        "tiles": ["https://s3.amazonaws.com/cpln-nathan/{z}/{x}/{y}.pbf"],
+        "minzoom": 0,
+        "maxzoom": 19
+      },
+      "source-layer": "drugCrime",
+      "paint": {
+        "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0, "#F28CD3",
+            0.2, "#D762A6",
+            0.4, "#BE4483",
+            0.6, "#9A3F73",
+            0.8, "#753962",
+            1, "#562B51"
+        ],
+        "heatmap-opacity": 0.75,
+    }
+  });
+});
+$('#mhv').on('click', function() {
   map.addLayer({
-    "id": "drugCrime",
-    "type": "heatmap",
+    "id": "mhv",
+    "type": "fill",
     "source": {
-      "type": "vector",
+      "type": "geojson",
       "tiles": ["https://s3.amazonaws.com/cpln-nathan/{z}/{x}/{y}.pbf"],
       "minzoom": 0,
       "maxzoom": 19
     },
-    "source-layer": "drugCrime",
+    "source-layer": "mhv",
     "paint": {
       "heatmap-color": [
           "interpolate",
@@ -53,37 +88,32 @@ map.on('load', function() {
       "heatmap-opacity": 0.75,
   }
 });
-
-  const data = "https://raw.githubusercontent.com/jdkone/Final/master/marijuana_licenses_geo.geojson?token=AhvfewGC5LM0zCRbfX5ACbE8ZYibPjWLks5a7L-_wA%3D%3D";
-
-  map.addSource("sourcey", {
-     		"type": "geojson",
-      	"data": data
-    });
-
-	map.loadImage("https://raw.githubusercontent.com/jdkone/Final/master/pot_leaf.png?token=Ahvfe5Ezbo7_gHtUOaKef_pgoMUGDziOks5a7hVAwA%3D%3D", (error, data) => {
-    if(error){
-      alert("wellllllll well well");
-    }
-
-    map.addImage("icon", data);
-
-    map.addLayer({
-      id: 'iconLayer',
-      type: "symbol",
-      source: 'sourcey',
-      layout: {
-        'icon-image': 'icon',
-        'icon-allow-overlap': true,
-        'icon-ignore-placement': true,
-        'icon-size': 0.04
+});
+  $('#cannabis').on('click', function() {
+    const data = "https://raw.githubusercontent.com/jdkone/Final/master/marijuana_licenses_geo.geojson?token=AhvfewGC5LM0zCRbfX5ACbE8ZYibPjWLks5a7L-_wA%3D%3D";
+    map.addSource("sourcey", {
+       		"type": "geojson",
+        	"data": data
+      });
+  	map.loadImage("https://raw.githubusercontent.com/jdkone/Final/master/pot_leaf.png?token=Ahvfe0moSQvjXT2GmB7kCLS340VLH51sks5a7hZOwA%3D%3D", (error, data) => {
+      if(error){
+        alert("wellllllll well well");
       }
+      map.addImage("icon", data);
+      map.addLayer({
+        id: 'iconLayer',
+        type: "symbol",
+        source: 'sourcey',
+        layout: {
+          'icon-image': 'icon',
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
+          'icon-size': 0.02
+        }
+      });
     });
   });
 });
-
-map.addControl(new mapboxgl.NavigationControl());
-
 
 /*map.on('load', function() {
 

@@ -11,24 +11,31 @@
         #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
   </head>
   <body>
+    <!-- Map -->
+    <div id="map"></div>
     <!--Top Panel-->
     <div id="topbar">
-      <h2>Has Marijuana Legalisation Changed the Geography of Drug Crime in Denver?</h2>
+      <h2>How Has Marijuana Legalization Changed the Geography of Social Issues in Denver?</h2>
     </div>
     <!--Left Panel-->
     <div id="sidebar">
-      <p>Let's talk more about this</p>
-      <button id="prev">Prev</button>
-      <button id="next">Next</button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a Layer
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="crime" href="#">Drug Crime</a>
+          <a class="dropdown-item" id="cannabis" href="#">Cannabis Retailers</a>
+          <a class="dropdown-item" id="mhv" href="#">Median Home Values</a>
+        </div>
+      </div>
     </div>
-    <!-- Map -->
-    <div class = "marker" id="map"></div>
-    <div id="slide_holder"></div>
     <!-- Javascript Imports -->
     <script src="js/underscore.js"></script>
     <script src="js/jquery-2.2.0.js"></script>
-    <script src="js/midterm1.js"></script>
+    <script src="js/final.js"></script>
   </body>
 </html>
