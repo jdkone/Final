@@ -245,7 +245,7 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  margin: auto;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -2416,6 +2416,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   line-height: 1.5;
   border: 0;
   border-radius: 0;
+  margin: auto;
 }
 
 .btn:focus,.btn:active {
@@ -2477,7 +2478,8 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #205B27;
   opacity: 1;
-  width: 206px;
+  width: 265px;
+  margin-top: 50px;
 }
 
 .btn-secondary:hover {
@@ -3144,7 +3146,7 @@ tbody.collapse.show {
 
 .dropdown-item {
   display: block;
-  width: 100%;
+  width: 265px;
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;

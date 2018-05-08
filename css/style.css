@@ -33,10 +33,26 @@ p {
     bottom: 0px;
 }
 
+#legend {
+  position: absolute;
+  background-color: #fff;
+  padding: 15px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2000;
+  text-align: right;
+  text-indent: 23px;
+}
+
+.pink {
+  width: 20px;
+  height: 20px;
+}
+
 #sidebar {
     position: absolute;
-    left: 50px;
-    width: 350px;
+    left: 70px;
+    width: 300px;
     top: 50px;
     bottom: 0;
     overflow-y: auto;

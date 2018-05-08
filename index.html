@@ -18,21 +18,32 @@
     <div id="map"></div>
     <!--Top Panel-->
     <div id="topbar">
-      <h2>How Has Marijuana Legalization Changed the Geography of Social Issues in Denver?</h2>
+      <h2>Exploring Marijuana Legalization and the Geography of Social Issues in Denver</h2>
     </div>
     <!--Left Panel-->
     <div id="sidebar">
-      <div class="dropdown">
+      <div class="dropdown" style= "margin-left:auto;margin-right:auto;">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose a Layer
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" id="crime" href="#">Drug Crime</a>
-          <a class="dropdown-item" id="cannabis" href="#">Cannabis Retailers</a>
           <a class="dropdown-item" id="mhv" href="#">Median Home Values</a>
+          <a class="dropdown-item" id="cannabis" href="#">Cannabis Retailers</a>
         </div>
       </div>
     </div>
+    <!--Legend-->
+    <div id='legend'>
+      <div class='grid mb6'>
+        <div>Low</div><div class='pink' style = "background-color: #F28CD3"></div>
+        <div class='pink' style = "background-color: #D762A6"></div>
+        <div class='pink' style = "background-color: #BE4483"></div>
+        <div class='pink' style = "background-color: #9A3F73"></div>
+        <div class='pink' style = "background-color: #753962"></div>
+        <div class='pink' style = "background-color: #562B51"></div><div>High</div>
+      </div>
+</div>
     <!-- Javascript Imports -->
     <script src="js/underscore.js"></script>
     <script src="js/jquery-2.2.0.js"></script>
