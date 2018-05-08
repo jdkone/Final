@@ -68,25 +68,25 @@ $('#mhv').on('click', function() {
     "type": "fill",
     "source": {
       "type": "geojson",
-      "tiles": ["https://s3.amazonaws.com/cpln-nathan/{z}/{x}/{y}.pbf"],
+      "data": "https://raw.githubusercontent.com/jdkone/Final/master/mhv.geojson?token=AhvfewGC5LM0zCRbfX5ACbE8ZYibPjWLks5a7L-_wA%3D%3D",
       "minzoom": 0,
       "maxzoom": 19
     },
     "source-layer": "mhv",
     "paint": {
-      "heatmap-color": [
-          "interpolate",
-          ["linear"],
-          ["heatmap-density"],
-          0, "#F28CD3",
-          0.2, "#D762A6",
-          0.4, "#BE4483",
-          0.6, "#9A3F73",
-          0.8, "#753962",
-          1, "#562B51"
-      ],
-      "heatmap-opacity": 0.75,
-  }
+      'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'mhv'],
+                111000, '#F28CD3',
+                196100, '#EED322',
+                261400, '"#D762A6"',
+                331800, '#BE4483',
+                2500000, '#9A3F73',
+                4000000, '#753962'
+            ],
+            'fill-opacity': 0.75
+  };
 });
 });
   $('#cannabis').on('click', function() {
